@@ -1,0 +1,59 @@
+<% include ./header %>
+    
+            <div class="collapse navbar-collapse">
+               
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+    
+
+
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Shopping Cart</h1> 
+            <p>View our best products from all over the world!</p>
+            <form action="/products" method="GET" class="form-inline" id="product-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Product search..." class="form-control">
+                </div>
+                <!--<button class="btn btn-inline" type="submit">Search</button>-->
+                <input type="submit" value="Submit">
+            </form>
+            
+            <form action="/sort" method="GET" class="form-inline mt-15" id="product-sort">
+                
+                <input type="submit" value="Sort by rating">
+            </form>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% if(products.length == 0) { %>
+        <p>No product found..Please enter valid product name</p>
+        <% } %>
+       <% products.forEach((product) => { %>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                <img src= "<%= product.image %>" >
+                <div class="caption">
+                    <h4> <%= product.name %> </h4>
+                </div>
+                <p>
+                    <a href="/products/<%=product._id %>" class="btn btn-primary">More Info!!</a>
+                </p>
+            </div>
+             
+            
+        </div>
+        <% }); %>  
+    </div>
+</div>
+
+
+<% include ./footer %>
